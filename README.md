@@ -16,6 +16,6 @@ Stores customer infomation such as customer ID ,name , email ,and city.[screensh
 # Order
 stores customer orders and the dates on which they were placed. [sreenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/6511aa032c3d6bfaac831fbe97688610b7d896b9/Screenshot%202026-09-20%20121311.png)
 # Products 
-stores product information such as product ID, product name ,category,and price.[screenshot](
+stores product information such as product ID, product name ,category,and price.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/f58b75792f5babdae0850cf2e061bccbd9490958/Screenshot%202026-09-20%20130034.png)
 # Order items 
 stores the individual products included in each order,including the quantity.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/9cceb257ea279109272961510c4dd5fc7671d3c7/Screenshot%202026-09-20%20121420.png)
