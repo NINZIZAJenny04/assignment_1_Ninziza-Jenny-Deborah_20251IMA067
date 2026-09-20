@@ -39,3 +39,22 @@ SELECT o.order_date, SUM(oi.quantity * p.price) AS daily_revenue, SUM(SUM(oi.qua
 SELECT customer_id, customer_name, order_id, order_date, order_date - LAG(order_date) OVER ( PARTITION BY customer_id ORDER BY order_date, order_id ) AS days_between_orders FROM ( SELECT c.customer_id, c.customer_name, o.order_id, o.order_date FROM customers c JOIN orders o ON c.customer_id = o.customer_id ) ORDER BY customer_id, order_date; [Screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/a8414fb9fbf17302b999c5b79177890f7ba6115d/Screenshot%202026-09-20%20135610.png)
 ## Bussiness interpretation
 The analysis helps Sunrise Supermarket understand its customers, products, and sales performance. By examining customer spending, management can identify customers who contribute more to total sales and understand repeat purchasing behavior. Product and order analysis can also show which products are being purchased and in what quantities, which can support inventory planning.
+## Challenges and Resolution
+## Challenge 1: Connecting the Tables
+It was challenging to understand how the customers, orders, products, and order_items tables were connected.
+Resolution: I used the primary keys and foreign keys to correctly connect the tables using JOIN statements.
+## Challenge 2: Calculating Customer Spending
+Customer spending was not directly stored in the database.
+Resolution: I calculated spending using quantity × price and used SUM() to calculate each customer's total spending.
+## Challenge 3: Finding Customers Above Average Spending
+It was difficult to compare each customer's total spending with the overall average.
+Resolution: I used a CTE to calculate each customer's total spending first, then compared the totals with the average spending.
+## Challenge 4: Using Window Functions
+Understanding functions such as RANK(), ROW_NUMBER(), and LAG() was challenging.
+Resolution: I used PARTITION BY and ORDER BY to organize the data and correctly apply the window functions.
+## Challenge 5: Calculating Running Revenue
+Calculating cumulative revenue over different order dates was challenging.
+Resolution: I first calculated revenue for each order and then used a window SUM() function to calculate the running total.
+## Challenge 6: Calculating the Days Between Orders
+Finding the number of days between a customer's current and previous order required comparing different rows.
+Resolution: I used the LAG() function to retrieve the previous order date and subtracted it from the current order date.
