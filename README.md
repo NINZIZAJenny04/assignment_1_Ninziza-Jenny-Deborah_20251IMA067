@@ -25,7 +25,7 @@ SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOI
 ## Query 2:
 SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; [Screenshot](
 ## Query 3:
-SELECT c.customer_id, c.customer_name, c.email, c.city, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, o.order_date; [Screenshot](
+SELECT c.customer_id, c.customer_name, c.email, c.city, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, o.order_date; [Screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/6573ec5fc7ede0591ecbb0b1db38070208fab864/Screenshot%202026-09-20%20133056.png)
 ## CTE Query
 WITH customer_totals AS ( SELECT c.customer_id, c.customer_name, SUM(oi.quantity * p.price) AS total_spend FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id, c.customer_name ) SELECT customer_id, customer_name, total_spend FROM customer_totals WHERE total_spend > ( SELECT AVG(total_spend) FROM customer_totals ) ORDER BY total_spend DESC; [Screenshot](
 ## Window-function queries
