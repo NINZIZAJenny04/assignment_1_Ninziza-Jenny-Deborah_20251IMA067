@@ -18,4 +18,4 @@ stores customer orders and the dates on which they were placed. [sreenshot](http
 # Products 
 stores product information such as product ID, product name ,category,and price.[screenshot](
 # Order items 
-stores the individual products included in each order,including the quantity.[screenshot](
+stores the individual products included in each order,including the quantity.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/9cceb257ea279109272961510c4dd5fc7671d3c7/Screenshot%202026-09-20%20121420.png)
