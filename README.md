@@ -12,4 +12,4 @@ Sunrise Supermarket sells different products to customers who place orders conta
 Management wants to use the sales data to understand customer purchasing behavior, identify customers who spend more, see which products are being purchased, and monitor how revenue changes over time. The database and SQL queries help management analyze this information and make better decisions about sales, customers, and inventory.
 ## Database tables
 # Customers
-Stores customer infomation such as customer ID ,name , email ,and city.
+Stores customer infomation such as customer ID ,name , email ,and city.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/29eaf7b7db5637625ac3c03fe0cc8a89cd9e8a9a/Screenshot%202026-09-20%20121218.png)
