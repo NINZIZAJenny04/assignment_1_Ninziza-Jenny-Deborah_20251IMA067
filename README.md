@@ -19,3 +19,21 @@ stores customer orders and the dates on which they were placed. [sreenshot](http
 stores product information such as product ID, product name ,category,and price.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/f58b75792f5babdae0850cf2e061bccbd9490958/Screenshot%202026-09-20%20130034.png)
 # Order items 
 stores the individual products included in each order,including the quantity.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/9cceb257ea279109272961510c4dd5fc7671d3c7/Screenshot%202026-09-20%20121420.png)
+## JOIN Queries
+## Query 1:This query uses an INNER JOIN to display order information together with the customer who placed each order.
+SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOIN customers c ON o.customer_id = c.customer_id ORDER BY o.order_date; [Screenshot](
+## Query 2:
+SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; [Screenshot](
+## Query 3:
+SELECT c.customer_id, c.customer_name, c.email, c.city, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, o.order_date; [Screenshot](
+## CTE Query
+WITH customer_totals AS ( SELECT c.customer_id, c.customer_name, SUM(oi.quantity * p.price) AS total_spend FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id, c.customer_name ) SELECT customer_id, customer_name, total_spend FROM customer_totals WHERE total_spend > ( SELECT AVG(total_spend) FROM customer_totals ) ORDER BY total_spend DESC; [Screenshot](
+## Window-function queries
+Rank customers by total amount spent, highest first
+SELECT c.customer_id, c.customer_name, SUM(oi.quantity * p.price) AS total_spend, RANK() OVER ( ORDER BY SUM(oi.quantity * p.price) DESC ) AS spending_rank FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id, c.customer_name ORDER BY spending_rank; [Screenshot](
+## Number each customer's orders in the order placed
+SELECT c.customer_id, c.customer_name, o.order_id, o.order_date, ROW_NUMBER() OVER ( PARTITION BY c.customer_id ORDER BY o.order_date, o.order_id ) AS order_number FROM customers c JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, order_number; [Screenshot](
+## Show a running total of revenue over time
+SELECT o.order_date, SUM(oi.quantity * p.price) AS daily_revenue, SUM(SUM(oi.quantity * p.price)) OVER ( ORDER BY o.order_date ) AS running_revenue FROM orders o JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY o.order_date ORDER BY o.order_date; [Screenshot](
+## Show days between the current and previous order for each customer
+SELECT customer_id, customer_name, order_id, order_date, order_date - LAG(order_date) OVER ( PARTITION BY customer_id ORDER BY order_date, order_id ) AS days_between_orders FROM ( SELECT c.customer_id, c.customer_name, o.order_id, o.order_date FROM customers c JOIN orders o ON c.customer_id = o.customer_id ) ORDER BY customer_id, order_date; [Screenshot](
