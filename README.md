@@ -21,7 +21,7 @@ stores product information such as product ID, product name ,category,and price.
 stores the individual products included in each order,including the quantity.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/9cceb257ea279109272961510c4dd5fc7671d3c7/Screenshot%202026-09-20%20121420.png)
 ## JOIN Queries
 ## Query 1:This query uses an INNER JOIN to display order information together with the customer who placed each order.
-SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOIN customers c ON o.customer_id = c.customer_id ORDER BY o.order_date; [Screenshot](
+SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOIN customers c ON o.customer_id = c.customer_id ORDER BY o.order_date; [Screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/0e9b8ea0b52f053979edac6d5ac268bba527b80a/Screenshot%202026-09-20%20131900.png)
 ## Query 2:
 SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; [Screenshot](
 ## Query 3:
