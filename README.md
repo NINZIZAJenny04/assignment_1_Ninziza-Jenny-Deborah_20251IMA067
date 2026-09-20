@@ -58,3 +58,4 @@ Resolution: I first calculated revenue for each order and then used a window SUM
 ## Challenge 6: Calculating the Days Between Orders
 Finding the number of days between a customer's current and previous order required comparing different rows.
 Resolution: I used the LAG() function to retrieve the previous order date and subtracted it from the current order date.
+
