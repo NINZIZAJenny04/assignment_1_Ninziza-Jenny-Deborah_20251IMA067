@@ -13,3 +13,5 @@ Management wants to use the sales data to understand customer purchasing behavio
 ## Database tables
 # Customers
 Stores customer infomation such as customer ID ,name , email ,and city.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/29eaf7b7db5637625ac3c03fe0cc8a89cd9e8a9a/Screenshot%202026-09-20%20121218.png)
+# Order
+stores customer orders and the dates on which they were placed. [sreenshot](
