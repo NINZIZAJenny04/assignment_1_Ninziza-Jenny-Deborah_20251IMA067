@@ -23,7 +23,7 @@ stores the individual products included in each order,including the quantity.[sc
 ## Query 1:This query uses an INNER JOIN to display order information together with the customer who placed each order.
 SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOIN customers c ON o.customer_id = c.customer_id ORDER BY o.order_date; [Screenshot](
 ## Query 2:
-SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; [Screenshot](
+SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; [Screenshot](Screenshot%202026-09-20%20131900.png)
 ## Query 3:
 SELECT c.customer_id, c.customer_name, c.email, c.city, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, o.order_date; [Screenshot](
 ## CTE Query
