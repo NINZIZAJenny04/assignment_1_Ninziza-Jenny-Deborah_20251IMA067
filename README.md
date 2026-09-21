@@ -12,22 +12,22 @@ Sunrise Supermarket sells different products to customers who place orders conta
 Management wants to use the sales data to understand customer purchasing behavior, identify customers who spend more, see which products are being purchased, and monitor how revenue changes over time. The database and SQL queries help management analyze this information and make better decisions about sales, customers, and inventory.
 ## Database tables
 # Customers
-Stores customer infomation such as customer ID ,name , email ,and city.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/29eaf7b7db5637625ac3c03fe0cc8a89cd9e8a9a/Screenshot%202026-09-20%20121218.png)
+Stores customer infomation such as customer ID ,name , email ,and city.![screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/29eaf7b7db5637625ac3c03fe0cc8a89cd9e8a9a/Screenshot%202026-09-20%20121218.png)
 # Order
-stores customer orders and the dates on which they were placed. [sreenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/6511aa032c3d6bfaac831fbe97688610b7d896b9/Screenshot%202026-09-20%20121311.png)
+stores customer orders and the dates on which they were placed. ![sreenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/6511aa032c3d6bfaac831fbe97688610b7d896b9/Screenshot%202026-09-20%20121311.png)
 # Products 
-stores product information such as product ID, product name ,category,and price.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/f58b75792f5babdae0850cf2e061bccbd9490958/Screenshot%202026-09-20%20130034.png)
+stores product information such as product ID, product name ,category,and price.![screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/f58b75792f5babdae0850cf2e061bccbd9490958/Screenshot%202026-09-20%20130034.png)
 # Order items 
-stores the individual products included in each order,including the quantity.[screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/9cceb257ea279109272961510c4dd5fc7671d3c7/Screenshot%202026-09-20%20121420.png)
+stores the individual products included in each order,including the quantity.![screenshot](https://github.com/NINZIZAJenny04/assignment_1_Ninziza-Jenny-Deborah_20251IMA067/blob/9cceb257ea279109272961510c4dd5fc7671d3c7/Screenshot%202026-09-20%20121420.png)
 ## JOIN Queries
 ## Query 1:This query uses an INNER JOIN to display order information together with the customer who placed each order.
-SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOIN customers c ON o.customer_id = c.customer_id ORDER BY o.order_date; [Screenshot](
+SELECT o.order_id, c.customer_name, c.city, o.order_date FROM orders o INNER JOIN customers c ON o.customer_id = c.customer_id ORDER BY o.order_date; ![Screenshot](
 ## Query 2:
-SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; [Screenshot](Screenshot%202026-09-20%20131900.png)
+SELECT oi.order_item_id, oi.order_id, p.product_name, p.category, p.price, oi.quantity FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id ORDER BY oi.order_id; ![Screenshot](Screenshot%202026-09-20%20131900.png)
 ## Query 3:
-SELECT c.customer_id, c.customer_name, c.email, c.city, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, o.order_date; [Screenshot](Screenshot%202026-09-20%20133056.png)
+SELECT c.customer_id, c.customer_name, c.email, c.city, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id ORDER BY c.customer_id, o.order_date; ![Screenshot](Screenshot%202026-09-20%20133056.png)
 ## CTE Query
-WITH customer_totals AS ( SELECT c.customer_id, c.customer_name, SUM(oi.quantity * p.price) AS total_spend FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id, c.customer_name ) SELECT customer_id, customer_name, total_spend FROM customer_totals WHERE total_spend > ( SELECT AVG(total_spend) FROM customer_totals ) ORDER BY total_spend DESC; [Screenshot](Screenshot%202026-09-20%20133434.png)
+WITH customer_totals AS ( SELECT c.customer_id, c.customer_name, SUM(oi.quantity * p.price) AS total_spend FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id, c.customer_name ) SELECT customer_id, customer_name, total_spend FROM customer_totals WHERE total_spend > ( SELECT AVG(total_spend) FROM customer_totals ) ORDER BY total_spend DESC; ![Screenshot](Screenshot%202026-09-20%20133434.png)
 ## Window-function queries
 Rank customers by total amount spent, highest first
 SELECT c.customer_id, c.customer_name, SUM(oi.quantity * p.price) AS total_spend, RANK() OVER ( ORDER BY SUM(oi.quantity * p.price) DESC ) AS spending_rank FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id, c.customer_name ORDER BY spending_rank; [Screenshot](
